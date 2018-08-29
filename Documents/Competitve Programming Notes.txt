@@ -1,0 +1,119 @@
+									Competetive Programming
+====================================================================================================================================================
+Problem - 
+			- Paragraphs - Read it more- Think of solutions
+			- I/P foramt		|
+			- O/P format		| ---> Code after thinking the constraints and checking the I/O format
+			- Constraints ------
+			-sample i/o
+			- explainations
+------------------------------------------------------------------------------------------------------------			
+Input format -							Output format
+N 										3 is prime
+array[N]								5 is prime
+										6 is not prime
+
+no of Testcase							case1: prime
+input as per the no of testcase			case2: not prime
+------------------------------------------------------------------------------------------------------------
+constraints
+		- time limit
+		- memory limit
+		- 0<N<10^6 (range of input)
+		- 0<array[i]<10^8
+-------------------------------------------------------------------------------------------------------------
+Analyse the constraints- 
+max operations that can be performed in any processor - 10^8 operations per sec.
+complexity table -
+		N						TimeComplexity
+		10^18					O(logN)
+		10^8					O(N)
+		10^4					O(N^2)
+		10^7					O(NlogN)
+		10^2					O(N^3)
+		0<N<90					O(N^4)
+		0<N<20					O(2^N) as 2^20=10^8
+		0<=N<=11 				O(N!) as 11!= 10^8
+-------------------------------------------------------------------------------------------------------------------
+Verdict - Accepted, TLE, Compilation Error, RunTime Error - a) Divide by 0
+															b) Segmentation Fault - Array size is less or -ve/over indexes is accessed or array size > 10^8
+															max array size is 10^8 - i.e 256 MB
+															c) In a function,max size of array can be 10^6 - because max size of array in function is 4MB- formed in stack
+															solution is - Global array or Dynamic allocation - formed in heap
+Wrong Answer- 1) Integer return - sum of 2 integer- long
+			  2) Float and Double- check the precision
+			  3) uninitialised variables.
+----------------------------------------------------------------------------------------------------------------------------------------------------
+Prerequisitive- Java/C++
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+Searching, Sorting and Recursion-
+				- Binary Search
+				- Bubble Sort, Selection Sort, Insertion Sort
+				- Recursion
+				- Merge Sort, Quick sort - Divide and Conquer Algorithm
+				- BFS, DFS
+Data Structures-
+				- Arrays and Strings
+				- Linked List
+				- Stack and Queues
+				- Trees and Ties - Generic trees,binary trees, binary search trees
+				- Basic knowledge of Graphs
+				- Heaps
+				- Vectors and ArrayList
+				- HashTables
+Concepts-
+				- Bit Manipulation
+				- Memory (Stack and Heap)
+				- Recursion
+				- Dynamic Programming
+				- Big O Time and Space
+---------------------------------------------------------------------------------------------------------------------------------------------------------		
+STL (Standard Template Library)-
+1) Vector- Dynamice array	vector<int>v; -- To enter element in vector - we use v.push_back(i+1); 
+Iterator - pointer to element within the range of the element - to iterate
+declaration - vector<int>::iterator it;
+for(it=v.begin();it!=v.end;it++){			it-begin-- first element of vector | end- pointing to next position of the last element
+	cout<<*it<<endl;
+}
+2) String - array of characters 
+3)Pair Classes - in C++, include<utility> 
+										pair<int,char>p;
+										p= make_pair(2,'b');
+										pair<int,char> p2(1,'a');
+										cout<<p.first<<" "<<p.second<<endl;
+4) Set - unique values - include<set> set<int>s;
+										s.insert(value);
+		Set implemented in C++ using balanced binary tree- to search/insertion/delete in balance binary search tree is O(logN)
+5)Map - key,value pair
+	map<int,int> m; m.insert(make_pair()) - Implemented using binary search tree- O(logN)
+		Unorderd Map- Implemented using hashTable - find O(1),insert and delete
+6) List - Implemented using DoublyLinked List
+7)Stack,Queue,Priority Queue
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+Sort - sort(arr,arr+n+1,greater<int>) - sorting in decreasing order
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+Recursion Examples:
+		- Fibonacci series, Factorial finding
+		- Merge Sort, Quick Sort
+		- Binary Searching
+		- Tree Traversal and Tree Problems- InOrder,PreOrder,PostOrder
+		- Graph Traversals : DFS and BFS
+		- Dynamic Programming Examples
+		- Divide and Conquer Algorithms
+		- Tower of Hanoi
+		- Backtracking Algorithms
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+BackTracking Examples :
+		- Binary Strings : Generating all binary Strings
+		- Generating k-ary Strings
+		- The Knapsack Problem
+		- Generalised Strings
+		- Hamiltonian Cycles
+		- Graph Coloring Problem
+--------------------------------------------------------------------------
+
+Dynamic Programming:
+1) Optimal Substructure Problems property
+2)Overlapping Subproblems property
+Solutions: Memoization and Tabulations------------------------------------------------------------------------		

@@ -1,0 +1,41 @@
+select * from  loyaltytransactionpoints where updateddatetime between trunc(sysdate,'mm') and sysdate;
+select * from  loyaltytransactionpoints where updateddatetime like '%-09-%';
+select to_char(sysdate-94) from dual;
+select to_char(sysdate,'mm') from dual;
+select count(*) from RPLMS_LIVE.loyaltytransactionpoints ; where partitionno='1' and calyear='2017';
+desc rplms_live.loyaltytransactionpoints;
+
+select * from rplms_live.loyaltytransactionpoints where partitionno='201' and msisdn='6289504965369';
+
+select count(*) from rplms_live.loyaltytransactionpoints where updateddatetime between trunc(sysdate,'mm') and sysdate;
+
+
+1)	Login through rplms user in DB and Create directory in oracle for the location where we have sufficient space from dump
+create directory dumpdir1 as '/home/rplms/DB_Backup1';
+grant read, write on directory dumpdir1 to public;
+
+2)	Take export through below qry
+expdp rplms/rplms DUMPFILE=rplms.dmp LOGFILE=db_dump.log DIRECTORY=dumpdir SCHEMAS=rplms exclude=TABLE:\" IN \(\'LMS_T_CDR_SUMMARY\', \'LMSSUBSCRIBERINFOMAST \', \'LPTPSUMMARY\', \'LMSSUBSCRIPTIONINFO\', \'LMSTRANSACTIONINFO\', \'LMSNONGSMREDEMINFO\', \'LMSTRANSACTIONCOUNTER\' \)\"
+
+3)	Dump file(rplms.dmp) and log file (db_dump.log) will be generated in the directory created
+
+
+expdp  rplms/rplms DUMPFILE=rplms_25july_2014.dmp LOGFILE=rplms_25july_2014.log DIRECTORY=dumpdir CONTENT=METADATA_ONLY 
+
+
+DROP USER rplms cascade;
+
+impdp rplms/rplms DIRECTORY=dumpdir1 DUMPFILE=rplms.dmp LOGFILE=rplms.log transform=segment_attributes:n  
+
+impdp rplms/rplms DIRECTORY=dumpdir1 DUMPFILE=rplms_without_data.dmp LOGFILE=rplms_without_data.log transform=segment_attributes:n  
+
+expdp rplms/rplms DUMPFILE=rplms_25july_2014.dmp LOGFILE=rplms_25july_2014.log DIRECTORY=dumpdir1 SCHEMAS=rplms 
+
+imp dbdev_hcpt/dbdev_hcpt@RPLUS fromuser=rplms touser=oracle FILE=loyaltytransactionpoints.dmp TABLES=LOYALTYTRANSACTIONPOINTS rows=y log=loyalty.log
+
+ALTER SESSION SET current_schema = dbdev_hcpt;
+exp rplms_live/'Lm5!h3p1'@RPLMS file=loyaltytransactionpoints.dmp tables=rplms_live.loyaltytransactionpoints query=\"WHERE partitionno\<32\" rows=y indexes=n triggers=n grants=n log=loyalty.log
+
+
+
+sqlplus rplms_live/'Lm5!h3p1'@'(DESCRIPTION= (ADDRESS= (PROTOCOL=TCP) (HOST=10.64.44.40)(PORT=1521)) (CONNECT_DATA= (SERVER=dedicated) (SID=RPLMS)))'

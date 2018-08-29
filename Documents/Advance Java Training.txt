@@ -1,0 +1,134 @@
+													Advance Java Training/ Spring Training  		- SHoaib MN 9840135749
+================================================================================================================================================================-  Framework - template.
+  What is container ? 
+1. Difference between EJB and spring ? 			- https://stackoverflow.com/questions/4281304/what-is-the-difference-between-ejb-hibernate-spring-and-jsf	
+2. Relationship(Inheritence) is between classes and link is between objects.	
+3. Between classes, we have different relationship -	http://creately.com/blog/diagrams/understanding-the-relationships-between-classes/
+								i) Association - knowledge of
+								ii) Aggregation - part of - HAS A relationship
+								iii) Composition - whole of
+								iv) Generalisation - kind of - compile time binding
+								v) Realization - role of -  run time binding
+4. Using Reflection API, class loader uses the subjection. Reflection API is in lang package
+5. No object should be created in behavioral class. Objects should be created in factory classes.		
+6. Factory provides the transparency in creating the objects.i.e they hide whatever goes inside in creating objects. 
+Factory - factory https://www.tutorialspoint.com/design_pattern/factory_pattern.htm
+		- Abstract Factory
+		- factory method - return type is factory's objective.
+factory method should implement the command patterns i.e transparency / hides everything.
+Java has 4 containers - EJB Container, Application containers,Applet containers, Web Containers(Browser).
+Containers hides all the complexities. Spring is an application containers.
+Core container- dependency injection container. - https://docs.spring.io/spring/docs/2.5.x/reference/beans.html
+Object instance is getting created by spring - one for shoe shop and one for factory.
+-	http://javabeat.net/spring-bean-scopes-singleton-prototype/
+- concept of cloning ?
+Copy - 2 types - Deep copy and shallow copy - 
+Shallow copy/ Clone - properties are unique and resources are shared. - Object is resource. and object are stored in stack.
+We either create one instance or we work with prototype. as we don't deal with multiple instances in JAVA.
+		singleton - single property and resources are not shared.
+		mutliton - every one has single property and single resource
+By default any class cannot be cloned.
+Bean has a lifecycle that is maintained by spring.
+When to go for setter injection - Aggregation/Association
+When to go for constructor injection - Compositon 
+e.g : <jsp:forward page=""/> -- Page is required for the survival of the jsp forward.
+		<jsp:param../> - Child 
+		</jsp:forward>
+An application programming interface (API) is a set of subroutine definitions, protocols, and tools for building application software. 
+https://www.journaldev.com/2888/spring-tutorial-spring-core-tutorial
+https://github.com/in28minutes/SpringIn28Minutes	
+
+Autowiring - byName,byConstructor,byType
+Dependency Injection + AspectJ implementation of Inversion of Control.
+IOC- Inversion of Control - control is reversed. No need to search for services instead services will search for you. - so many cross cutting concerns 
+inversion of control: In a framework, unlike in libraries or in standard user applications, the overall program's flow of control is not dictated by the caller, but by the framework
+Cross cutting concerns - concerns representing functionalities for secondary requirements, applicable throughout the application and it affects the entire application - e.g. logging, security and data transfer - Done through Dependency Injection.
+Core cutting concerns - concerns representing single and specific functionality for primary requirements
+Introduction - how we can upgrade any object into advanced features.
+BeanPostProcessor Class- 2 methods - PostProcessBeforeInit, PostProcessAfterInit - Return type of object - Parameters passed are Object bean, name
+Never use specific logic in beanPostProcessor .It is for all the beans i.e common.
+We can do any no of operations if we have object.Reflection plays a major role in AOP.
+2 ways to create thread : 1 is extends thread and override run method and create an object of it and call the start method and another one is implements runnable.
+only one way to create a thread, through thread class.
+where as implements runnable is only to allocate the job to a thread.
+Runnable is synchronous and callable is asynchronous. therefore 2 ways to implement/ allocate a job to thread. 
+Note : Go through Concurrency API,NIA,Collections framework and Reflection API of JDK 7.
+=============================================================================================================================================================
+																Day 2
+=============================================================================================================================================================
+Joint Cut - point in the program execution of the application where aspect can be plugged in. to add new behaviour .
+Point Cut- This is a set of one or more join points where an advice should be executed.
+advice- actual action to be taken either before or after the method execution.This is an actual piece of code that is invoked during the program execution by Spring AOP framework.
+https://stackoverflow.com/questions/15447397/spring-aop-whats-the-difference-between-joinpoint-and-pointcut
+Both these are achieved through 2 special classes - 1. 							
+AOP - new new requirements- add them as aspects.i.e extensions rather than modification.
+Spring AOP module provides interceptors to intercept an application
+Without declaring interfaces,we cannot implement AOP.
+Interceptor means 
+4 cross cutting concerns related to advise - 1. Before 2. Around 3. After 4. Exceptions
+when we register any advise , it should be intact with the business beans and methods in the business bean.
+Registration is done with the proxyfactory bean.
+Step 1- Register my advise.
+Step 2- Register my proxy factory bean includes methods to be declared in the interfaces.
+Step 3- Read the seller in the demo class.
+Step 4- Do the configurations.
+Without opening the sellshoe method,our sellshoe method is getting called.
+Instead of handling so much exceptions, 
+Marker Interface,no need to define methods.
+ExceptionAdvice should come immediately after the welcome advice.
+Introduction- another way to add aspects to the existing application.Adding a method itself as an aspect can also be done. Earlier adding aspect was done using the method. An introduction allows you to add new methods or attributes to the existing classes.
+Steps to bring methodology in our application through Spring - 
+1. Create a normal interface and provide the implementation.
+2. Implementaion class should compulsarily extends DelegatingIntroductionAdvisorInterceptor Class.
+3. Configurations now.define the bean for Impl Class.i.e register the advise through defaultAdvisor through constructor arg.
+4. Add the advice through the proxy interfaces. 
+5. Attach the list.
+Follow the reference document to explore more about the AOP.
+Another Concept Spring Address is : HTTP
+-------------------------------------------------------------------
+HTTP- Hypertext transfer protocol - spring created separete container for HTTP - Spring MVC
+Remote Method Invocation through text protocol.biggest disadvantages for RMI,RPC,TCP/IP is that transfer is done over the the wire on homogenous systems.
+i.e serialization and deserialisation should be homogenous.CORBA - earlier used as heterogenous systems communication.
+Broker- presents- associate- knowledge of 
+Proxy- represents- aggregate- part of
+HTTP was created for Information Highway.to acheive interoperabiltiy between services.All the services are available there.
+REST- Representational State Transfer- when URL comes,state of the order changes.
+Spring brought in HTTP- the architecture of spring MVC application, the overall strength using DI,AOP.- scalability,refactoring for larger applications
+Struts is a tightly coupled together with the other technologies. i.e RequestServlet
+many frameworks in HTTP - eg. Struts Framework - overruled by Spring
+difference between SOAP webservice and normal webservice? 
+SOAP is a business protocol with soap body and header and footer with envelope.Global specification which we cannot create. It is only JA
+URL representation which is capable of changing the state of object is called REST.
+JAX-RPC vs JAX-WS - sending a message in a more formal way i.e JAX_WS document exchange model.
+Spring MVC Framework- 1. Scalable 
+MVC- Annotation Driven
+	Control package- Business controller 
+	View Resolver
+Open the web.xml- Spring MVC uses a servelet named as Dispatcher-Servlet. Any thing with /form/* will come to this servlet.
+As per spring, the configuration file name should be dispatcher-servlet.xml as we have given the name as dispatcher in web.xml
+Now create a class.
+By using the annotation,containers can infer some knowledge for putting some conditions in order to replacing the XML configurations.
+Adding a annotation is simply adding the configuration data to an already existing program. 
+GET method - used for quering
+POST method - used for posting in a tunnel which we can not access.
+HTTP Service - invoked through a HTML form. or directly through the URL
+for HTML form, contains the data, and it should be scoped hence in Spring ,it uses name command bean. Form will have input text field, data will have some object - i.e command bean object. to trace / attach at later stage.
+Spring given spring tag libraries,all action controls can be placed as tags.
+How to associate a command bean to HTML page? 
+- Need to create a web page having spring tag library, form will be created using that spring tag library.
+<%taglib/>
+<form:form />
+Class which has 2 properties- private input uname,upass - should match uname command beans 
+method =post to posting, action =submit form. command name- it is the place where we give the name of the bean where the properties are uname and upass.
+Several predefined objects spring capable of injecting - model	
+return regform.- returning string(regform) and modelobject - directly go to view resolver.- Viewresolver picks up the name and adds the prefix and suffix and inject it to the jsp and that jsp is thrown to the client.
+How to expose your java services in HTTP world?
+How to leverage the spring ?
+How to leverage your form processing in spring?
+-------------------------------------------
+Few annotations useful in DI and AOP.
+-------------------------------------------
+@Autowired - wire the shoeshop proerty with a bean loaded by spring. i.e by default it is by type
+by default, automatically luckyshoeshop is allocated to the seller object.
+@Qualifier("LuckyShowShop")- by name. If two type of object, which we want to inject.
+@Component-for the component which we want to inject. to load it as a component
