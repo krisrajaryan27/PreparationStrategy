@@ -1,0 +1,213 @@
+﻿								 	168 DB Server Details
+									============
+
+LINUX CPU Hardware Information
+=======================================================================  
+-bash-4.1$ lscpu
+Architecture:          x86_64
+CPU op-mode(s):        32-bit, 64-bit
+Byte Order:            Little Endian
+CPU(s):                24
+On-line CPU(s) list:   0-23
+Thread(s) per core:    2
+Core(s) per socket:    6
+Socket(s):             2
+NUMA node(s):          2
+Vendor ID:             GenuineIntel
+CPU family:            6
+Model:                 45
+Stepping:              7
+CPU MHz:               1995.201
+BogoMIPS:              3989.92
+Virtualization:        VT-x
+L1d cache:             32K
+L1i cache:             32K
+L2 cache:              256K
+L3 cache:              15360K
+NUMA node0 CPU(s):     0-5,12-17
+NUMA node1 CPU(s):     6-11,18-23
+
+FREE AND USED MEMORY IN System
+=======================================================================
+-bash-4.1$ cat /proc/meminfo
+MemTotal:       132325524 kB
+MemFree:        20135336 kB
+Buffers:         1705604 kB
+Cached:         17725336 kB
+SwapCached:            0 kB
+Active:         83536832 kB
+Inactive:        8668264 kB
+Active(anon):   76279512 kB
+Inactive(anon):  1198172 kB
+Active(file):    7257320 kB
+Inactive(file):  7470092 kB
+Unevictable:           0 kB
+Mlocked:               0 kB
+SwapTotal:             0 kB
+SwapFree:              0 kB
+Dirty:             21576 kB
+Writeback:             0 kB
+AnonPages:      72775076 kB
+Mapped:          2995448 kB
+Shmem:           4702608 kB
+Slab:            1119108 kB
+SReclaimable:     933380 kB
+SUnreclaim:       185728 kB
+KernelStack:       51648 kB
+PageTables:      1217572 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:    57774152 kB
+Committed_AS:   197018428 kB
+VmallocTotal:   34359738367 kB
+VmallocUsed:      485336 kB
+VmallocChunk:   34291741884 kB
+HardwareCorrupted:     0 kB
+AnonHugePages:  50987008 kB
+HugePages_Total:    8192
+HugePages_Free:     7330
+HugePages_Rsvd:     2788
+HugePages_Surp:        0
+Hugepagesize:       2048 kB
+DirectMap4k:        7852 kB
+DirectMap2M:     3102720 kB
+DirectMap1G:    131072000 kB
+
+RUNNING KERNEL VERSION
+================================================
+-bash-4.1$ cat /proc/version
+Linux version 2.6.32-358.el6.x86_64 (mockbuild@x86-022.build.eng.bos.redhat.com) (gcc version 4.4.7 20120313 (Red Hat 4.4.7-3) (GCC) ) #1 SMP Tue Jan 29 11:47:41 EST 2013
+
+LINUX DISTRIBUTION AND VERSION
+===================================================
+-bash-4.1$ cat /etc/*release*
+LSB_VERSION=base-4.0-amd64:base-4.0-noarch:core-4.0-amd64:core-4.0-noarch:graphics-4.0-amd64:graphics-4.0-noarch:printing-4.0-amd64:printing-4.0-noarch
+cat: /etc/lsb-release.d: Is a directory
+Red Hat Enterprise Linux Server release 6.4 (Santiago)
+Red Hat Enterprise Linux Server release 6.4 (Santiago)
+cpe:/o:redhat:enterprise_linux:6server:ga:server
+
+LIST OF ALL PCI Devices
+======================================================================
+-bash-4.1$ lspci
+00:00.0 Host bridge: Intel Corporation Xeon E5/Core i7 DMI2 (rev 07)
+00:01.0 PCI bridge: Intel Corporation Xeon E5/Core i7 IIO PCI Express Root Port 1a (rev 07)
+00:01.1 PCI bridge: Intel Corporation Xeon E5/Core i7 IIO PCI Express Root Port 1b (rev 07)
+00:02.0 PCI bridge: Intel Corporation Xeon E5/Core i7 IIO PCI Express Root Port 2a (rev 07)
+00:02.1 PCI bridge: Intel Corporation Xeon E5/Core i7 IIO PCI Express Root Port 2b (rev 07)
+00:02.2 PCI bridge: Intel Corporation Xeon E5/Core i7 IIO PCI Express Root Port 2c (rev 07)
+00:02.3 PCI bridge: Intel Corporation Xeon E5/Core i7 IIO PCI Express Root Port 2d (rev 07)
+00:03.0 PCI bridge: Intel Corporation Xeon E5/Core i7 IIO PCI Express Root Port 3a in PCI Express Mode (rev 07)
+00:03.1 PCI bridge: Intel Corporation Xeon E5/Core i7 IIO PCI Express Root Port 3b (rev 07)
+00:03.2 PCI bridge: Intel Corporation Xeon E5/Core i7 IIO PCI Express Root Port 3c (rev 07)
+00:03.3 PCI bridge: Intel Corporation Xeon E5/Core i7 IIO PCI Express Root Port 3d (rev 07)
+00:04.0 System peripheral: Intel Corporation Xeon E5/Core i7 DMA Channel 0 (rev 07)
+00:04.1 System peripheral: Intel Corporation Xeon E5/Core i7 DMA Channel 1 (rev 07)
+00:04.2 System peripheral: Intel Corporation Xeon E5/Core i7 DMA Channel 2 (rev 07)
+00:04.3 System peripheral: Intel Corporation Xeon E5/Core i7 DMA Channel 3 (rev 07)
+00:04.4 System peripheral: Intel Corporation Xeon E5/Core i7 DMA Channel 4 (rev 07)
+00:04.5 System peripheral: Intel Corporation Xeon E5/Core i7 DMA Channel 5 (rev 07)
+00:04.6 System peripheral: Intel Corporation Xeon E5/Core i7 DMA Channel 6 (rev 07)
+00:04.7 System peripheral: Intel Corporation Xeon E5/Core i7 DMA Channel 7 (rev 07)
+00:05.0 System peripheral: Intel Corporation Xeon E5/Core i7 Address Map, VTd_Misc, System Management (rev 07)
+00:05.2 System peripheral: Intel Corporation Xeon E5/Core i7 Control Status and Global Errors (rev 07)
+00:05.4 PIC: Intel Corporation Xeon E5/Core i7 I/O APIC (rev 07)
+00:11.0 PCI bridge: Intel Corporation C600/X79 series chipset PCI Express Virtual Root Port (rev 05)
+00:1a.0 USB controller: Intel Corporation C600/X79 series chipset USB2 Enhanced Host Controller #2 (rev 05)
+00:1c.0 PCI bridge: Intel Corporation C600/X79 series chipset PCI Express Root Port 1 (rev b5)
+00:1c.7 PCI bridge: Intel Corporation C600/X79 series chipset PCI Express Root Port 8 (rev b5)
+00:1d.0 USB controller: Intel Corporation C600/X79 series chipset USB2 Enhanced Host Controller #1 (rev 05)
+00:1e.0 PCI bridge: Intel Corporation 82801 PCI Bridge (rev a5)
+00:1f.0 ISA bridge: Intel Corporation C600/X79 series chipset LPC Controller (rev 05)
+00:1f.2 IDE interface: Intel Corporation C600/X79 series chipset 4-Port SATA IDE Controller (rev 05)
+01:00.0 System peripheral: Hewlett-Packard Company Integrated Lights-Out Standard Slave Instrumentation & System Support (rev 05)
+01:00.1 VGA compatible controller: Matrox Electronics Systems Ltd. MGA G200EH
+01:00.2 System peripheral: Hewlett-Packard Company Integrated Lights-Out Standard Management Processor Support and Messaging (rev 05)
+01:00.4 USB controller: Hewlett-Packard Company Integrated Lights-Out Standard Virtual USB Controller (rev 02)
+02:00.0 RAID bus controller: Hewlett-Packard Company Smart Array Gen8 Controllers (rev 01)
+03:00.0 Ethernet controller: Broadcom Corporation NetXtreme BCM5719 Gigabit Ethernet PCIe (rev 01)
+03:00.1 Ethernet controller: Broadcom Corporation NetXtreme BCM5719 Gigabit Ethernet PCIe (rev 01)
+03:00.2 Ethernet controller: Broadcom Corporation NetXtreme BCM5719 Gigabit Ethernet PCIe (rev 01)
+03:00.3 Ethernet controller: Broadcom Corporation NetXtreme BCM5719 Gigabit Ethernet PCIe (rev 01)
+07:00.0 Fibre Channel: QLogic Corp. ISP2532-based 8Gb Fibre Channel to PCI Express HBA (rev 02)
+07:00.1 Fibre Channel: QLogic Corp. ISP2532-based 8Gb Fibre Channel to PCI Express HBA (rev 02)
+20:00.0 PCI bridge: Intel Corporation Xeon E5/Core i7 DMI2 in PCI Express Mode (rev 07)
+20:01.0 PCI bridge: Intel Corporation Xeon E5/Core i7 IIO PCI Express Root Port 1a (rev 07)
+20:01.1 PCI bridge: Intel Corporation Xeon E5/Core i7 IIO PCI Express Root Port 1b (rev 07)
+20:02.0 PCI bridge: Intel Corporation Xeon E5/Core i7 IIO PCI Express Root Port 2a (rev 07)
+20:02.1 PCI bridge: Intel Corporation Xeon E5/Core i7 IIO PCI Express Root Port 2b (rev 07)
+20:02.2 PCI bridge: Intel Corporation Xeon E5/Core i7 IIO PCI Express Root Port 2c (rev 07)
+20:02.3 PCI bridge: Intel Corporation Xeon E5/Core i7 IIO PCI Express Root Port 2d (rev 07)
+20:03.0 PCI bridge: Intel Corporation Xeon E5/Core i7 IIO PCI Express Root Port 3a in PCI Express Mode (rev 07)
+20:03.1 PCI bridge: Intel Corporation Xeon E5/Core i7 IIO PCI Express Root Port 3b (rev 07)
+20:03.2 PCI bridge: Intel Corporation Xeon E5/Core i7 IIO PCI Express Root Port 3c (rev 07)
+20:03.3 PCI bridge: Intel Corporation Xeon E5/Core i7 IIO PCI Express Root Port 3d (rev 07)
+20:04.0 System peripheral: Intel Corporation Xeon E5/Core i7 DMA Channel 0 (rev 07)
+20:04.1 System peripheral: Intel Corporation Xeon E5/Core i7 DMA Channel 1 (rev 07)
+20:04.2 System peripheral: Intel Corporation Xeon E5/Core i7 DMA Channel 2 (rev 07)
+20:04.3 System peripheral: Intel Corporation Xeon E5/Core i7 DMA Channel 3 (rev 07)
+20:04.4 System peripheral: Intel Corporation Xeon E5/Core i7 DMA Channel 4 (rev 07)
+20:04.5 System peripheral: Intel Corporation Xeon E5/Core i7 DMA Channel 5 (rev 07)
+20:04.6 System peripheral: Intel Corporation Xeon E5/Core i7 DMA Channel 6 (rev 07)
+20:04.7 System peripheral: Intel Corporation Xeon E5/Core i7 DMA Channel 7 (rev 07)
+20:05.0 System peripheral: Intel Corporation Xeon E5/Core i7 Address Map, VTd_Misc, System Management (rev 07)
+20:05.2 System peripheral: Intel Corporation Xeon E5/Core i7 Control Status and Global Errors (rev 07)
+20:05.4 PIC: Intel Corporation Xeon E5/Core i7 I/O APIC (rev 07)
+
+LIST ALL BLOCK DEVICES /MOUNT POINTS
+================================================================
+-bash-4.1$ lsblk
+NAME    MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
+sr0      11:0    1  1024M  0 rom  
+sda       8:0    0   1.7T  0 disk 
+├─sda1    8:1    0   1.5G  0 part 
+├─sda2    8:2    0 200.3M  0 part /boot
+├─sda3    8:3    0    50G  0 part /home
+├─sda4    8:4    0     1K  0 part 
+├─sda5    8:5    0    30G  0 part /tmp
+├─sda6    8:6    0    10G  0 part /
+├─sda7    8:7    0    10G  0 part /opt
+├─sda8    8:8    0    10G  0 part /usr
+├─sda9    8:9    0    10G  0 part /var
+└─sda10   8:10   0   1.5T  0 part /data
+
+Memory Usage on Linux
+======================================================================
+-bash-4.1$  free -t -m
+             total       used       free     shared    buffers     cached
+Mem:        129224     109560      19663          0       1666      17331
+-/+ buffers/cache:      90562      38661
+Swap:            0          0          0
+Total:      129224     109560      19663
+
+Memory Usage Statistics
+=========================================================================
+-bash-4.1$ vmstat -s
+    132325520  total memory
+    112131392  used memory
+     83525456  active memory
+      8628312  inactive memory
+     20194128  free memory
+      1706284  buffer memory
+     17683024  swap cache
+            0  total swap
+            0  used swap
+            0  free swap
+   4468530587 non-nice user cpu ticks
+       463065 nice user cpu ticks
+    657369871 system cpu ticks
+  44068348071 idle cpu ticks
+     16658711 IO-wait cpu ticks
+        68880 IRQ cpu ticks
+      7268543 softirq cpu ticks
+            0 stolen cpu ticks
+   2246221361 pages paged in
+  49493770314 pages paged out
+            0 pages swapped in
+            0 pages swapped out
+   3924964640 interrupts
+    474735931 CPU context switches
+   1498046529 boot time
+    185113415 forks
+

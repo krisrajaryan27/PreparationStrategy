@@ -1,0 +1,8 @@
+													DataStructures
+=============================================================================================================================================================
+Abstract Data Type: Only definition but no any implementation.
+Arrays - Advantages : Cost of accessing an element better. Stored on contiguous block of memory.Fixed size.
+Linked List- not stored on contiguous block of memory.No unused memory.Cost of inserting 
+odd occurence of a no. in array - res^=arr[i]; return res;
+Find the missing no- XOR of all the given nos. XOR all the nos from 1 to n. XOR both the results came from both XOR.
+														

@@ -1,0 +1,496 @@
+4 API to do the top up 
+
+Scripts to dump the BI id's - for Retailers - in mySql and infobright , for subscriber - mySql
+
+1. BI Product is not required. IRIS to be default.
+2. How data is coming in dashboard?
+3. GUI - dashboard with data, all the use cases should be tested, GUI should be up and running in production.
+4. Pretups should be deployed in Bangla link before travel.DO testing from mobile on SIte
+5. Configuration of segment.
+6. CE should be up and running
+7. Webaxn should be up and running.
+8. Reports should be working. - Offer Reports
+9. All segments should also be present in the segmentation.
+ 
+ Dashboard: DashboardConfig.xml - portLet : Method take - then go to struts.xml - and search class for it - and go to the method of that class.
+ 
+ ===========================
+ SegmentMapping.xml
+ SourceMapping.xml					For Configuring Segment Parameters.
+ SegmentSourceMapping.xml
+=============================
+applicationcontext-dataSource.xml - two db's defined - 1 for whole application and another for Reporting purposes.
+For Segment details insertion - we use conf/segment/dbconnpool.ini - where we define the db configuration in it.
+
+Segment Created- list generated and stored in segment table where list id is present. - Details of that list Id is present in CompressUserList
+CompressUserList- segment MSISDN filtered is saved.
+=============================================================================
+IRISOfferDetails: Above part of Offers -- OfferCreate.jsp 
+IRISOfferProperties: Below Dynamic part of Offers - Key value pairs -- Left part: OfferChannelLayout.jsp Right part: 
+Campaign Table: Campaign Information -- 
+RECHARGE_DETAILS: Reporting purpose
+====================================================================================
+curl -i "http://172.25.24.196:9000/webaxn/WidgetUSSD?msisdn=786945250023&isnewrequest=1&input=*555*789200000012*10*1357#" -- RetailerMSISDN/NewRequest/USSDCode/SubscriberMSISDN/Amount/PIN(RetailerPin)
+curl -i "http://172.25.24.196:9000/webaxn/WidgetUSSD?msisdn=786945250023&isnewrequest=0&input=1"
+tailf webaxn/logs/webaxn/webaxncs.log
+/home/rplus/webaxn/cdrs/blink/activation.cdr
+/home/rplus/webaxn/logs/blink/retailer_details.log
+
+Tapas Sir'Project: file://MCKD-00341/RevenuePlusGUI-Blocker
+
+==================================================================
+Root credentials: root	BL@iris!@34
+
+OAM GUI Credentials: admin/admin!23B
+
+mysql -uoam -poam -h10.40.43.182
+10.40.43.182
+
+
+Installation to be done: 
+java,python-devel,gcc,openssh-server,openssh-clients,vim
+yum remove mysql-community-libs mysql-community-common
+yum install mysql
+
+grant all on iris.* to 'rplus'@'%' identified by 'Rplus@123'; 
+grant all on iris.* to 'rplus'@'localhost' identified by 'rplus@123'; 
+GRANT ALL ON IRIS.* to 'rplus'@'127.0.0.1' identified by 'Rplus@123'; 
+
+GRANT ALL ON oam_db.* TO 'oam'@'%';
+GRANT ALL ON oam_db_perf.* TO 'oam'@'%';
+FLUSH PRIVILEGES;
+
+GRANT ALL ON oam_db.* TO 'oam'@'%';
+
+Open Files at a time limit
+====
+cat /proc/sys/fs/file-max
+=====
+Dynamic Segment Upload?
+Change the max comnnection in mysql- set global max connection -- in a file? ---- vim /mysql/my.cnf - max connections=2000
+
+
+InfoBright Server: 10.40.43.182   10.40.43.183
+Connect through users: postgres/postgres1234
+psql -d revenueplus -h 127.0.0.1 -U rplus -p 5029
+
+		<props>
+		        <prop key="hibernate.connection.driver_class">org.postgresql.Driver</prop>
+		        <prop key="hibernate.connection.url">jdbc:Postgresql://10.40.43.182:5029/revenueplus</prop>
+		        <prop key="hibernate.connection.username">rplus</prop>
+		        <prop key="hibernate.connection.password">rplus123</prop>
+		        <prop key="hibernate.connection.autoReconnect">true</prop>
+		        <prop key="hibernate.connection.autoReconnectForPools">true</prop>
+		        <prop key="hibernate.connection.is-connection-validation-required">true</prop>
+		        <prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
+			    <prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.cglib.use_reflection_optimizer">false</prop>
+				<prop key="hibernate.c3p0.min_size">1</prop>
+				<prop key="hibernate.c3p0.max_size">10</prop>
+				<prop key="hibernate.c3p0.timeout">0</prop>
+				<prop key="hibernate.c3p0.max_statements">50</prop>
+				<prop key="hibernate.c3p0.idle_test_period">10800</prop>
+				<prop key="hibernate.c3p0.acquire_increment">1</prop>
+		   </props> 
+		   
+		   
+url=jdbc:postgresql://10.40.43.182:5029/revenueplus
+username=rplus
+password=rplus123
+driverClassName=org.postgresql.Driver
+
+======================================================================================================
+IRISTransactionalData- Table where customer care details are there
+
+UserName: 8801962424327
+Pass: J89NUn
+
+======================================================================================================
+UserRoles 
+UserRolePrivilege
+
+CDRS path - 
+10.40.43.183
+Connect through users: postgres/postgres1234
+/infobrightdata/datafiles/TRANSACTIONAL_FILES 
+/infobrightdata/datafiles/TRANSACTIONAL_FILES/processed 
+
+sh irisstats.sh Processed 2018-01-23 00 0 
+
+Logs Directories
+====================================
+cd /data/irisbl/webaxn/logs/webaxn
+cd /data/irisbl/RevenuePlus/logs/
+
+tailf campaignexecuter.log 
+tailf webaxncs.log
+
+
+8801933002263
+8801984207863
+
+8801984207863
+===============================
+Oracle DB User creation
+===============================
+Production DB Credentials: COMVIVA_LMS/august#123	- DB IP: 
+
+create user dbdev_hcpt identified by dbdev_hcpt default tablespace USERS;
+ALTER USER dbdev_hcpt quota unlimited on USERS;
+set head off;
+select 'drop table ' ||table_name || ' cascade constraints' ||';' from user_tables;
+
+drop user dbdev_hcpt cascade;
+create user MOBILYTIX identified by dbdev_hcpt;
+grant connect to COMVIVA_LMS;
+grant resource,dba to COMVIVA_LMS;
+grant create session to COMVIVA_LMS;
+GRANT UNLIMITED TABLESPACE TO COMVIVA_LMS;
+select 'alter system kill session ''' || sid || ',' || serial# || ''';' from v$session where username = 'RP2_HCPT';
+SELECT sid, serial# FROM v$session WHERE username LIKE 'RP2_HCPT';
+ALTER SYSTEM KILL SESSION 'sid_value,serial#_value';
+
+set timing on set line 1000 
+
+ALTER USER dbdev_hcpt quota unlimited on USERS;
+
+1. Date Function how it is getting used in HCPT.
+
+drop table SEGMENTHISTORY cascade constraints;
+
+select * from programtriggermapping where programid=? and subssegmentid=? and triggerid not in (select triggerid from nexttriggeraction where programid=?);
+
+
+select 'drop table ' ||table_name || ' cascade constraints' ||';' from user_tables;
+
+SELECT sid, serial#, username, logon_time FROM v$session WHERE username LIKE 'DBDEV_HCPT';
+ALTER SYSTEM KILL SESSION '3,28047';
+
+select sum(pointsearned) as points from loyaltytransactionpoints where msisdn=? and currencytype=? and PartitionNo Between ? and ?
+
+
+delete from Campaign where campaignID='IMP_PRG851';
+
+delete from CAMPAIGNFIRSTEVENT where CampaignID='IMP_PRG851';
+
+delete from EVENTGROUPDETAILS where EventGroupID='EVTGRP0';
+
+delete from ActionProperties where ActionID in ('ACT_GRP13989651866348558','ACT_GRP13989703055967803','ACTN0','ACTN1','ACTN2','ACTN3','ACTN4','ACTN5','ACTN6','ACTN7');
+
+delete from EXPRESSIONPROPERTIES;
+
+delete from CAMPAIGNUSERLISTS where CampaignID='PRG921';
+
+delete from TriggerProperties where TriggerID IN ('TRIN0','TRIN1','TRIN2','TRI1515','TRIN3');
+
+
+
+http://10.64.76.11:8282/lms_hcpt_angie_services/services/RetailerUpdationRequest
+http://10.64.76.11:8282/lms_hcpt_angie_services/services/RetailerModification
+http://10.64.76.11:8282/lms_hcpt_angie_services/services/TransactionMsisdnChange
+
+
+
+curl -i "http://127.0.0.1:9090/webaxn/WidgetUSSD?msisdn=8801984207863&isnewrequest=1&input=*29394*8801933002263*10*7863#"
+
+mysql -urplus -pRplus@123 -h10.40.43.182 -e "use IRIS" -e "
+      LOAD DATA LOCAL INFILE '/data/irisbl/RevenuePlus/datafiles/IRIS_offer_matrix12.csv'
+      INTO TABLE SubscriberProfileTemp
+      FIELDS TERMINATED BY ','
+      OPTIONALLY ENCLOSED BY '\"'
+      LINES TERMINATED BY '\r\n'
+      IGNORE 1 LINES;"
+
+	 
+SELECT COUNT(*), OFR_NAME FROM IRISTransactionalData WHERE TR_DATE= '2018-01-12' AND TRAN_STATUS='SUCCESS' GROUP BY OFR_NAME
+
+Select count(*),sum(rechrge_amnt),sum(ret_com),avg(rechrge_amnt),avg(ret_com),count(distinct ret_msisdn),tr_date,t2.c,t2.RA,t2.td   from iristransactionaldata as t ,(select count(*) as c,sum(rechrge_amnt) as RA,tr_date as td from iristransactionaldata where tran_status='0' group by tr_date) as t2 where tran_status='0' and t.tr_date=t2.td and t.tr_date >=? and t.tr_date <=? group by t.tr_date,t2.c,t2.RA,t2.td order by tr_date DESC
+
+
+Select count(*),sum(rechrge_amnt),sum(ret_com),avg(rechrge_amnt),avg(ret_com),count(distinct ret_msisdn),tr_date,t2.c,t2.RA,t2.td   from iristransactionaldata as t ,(select count(*) as c,sum(rechrge_amnt) as RA,tr_date as td from iristransactionaldata where tran_status='0' and offer_type='2' group by tr_date) as t2 where tran_status='0' and offer_type!='0' and t.tr_date=t2.td and t.tr_date >='2017-12-28' and t.tr_date <='2018-01-26' group by t.tr_date,t2.c,t2.RA,t2.td order by tr_date DESC
+
+
+insert into RechargeRanges(StartRange,RangeValues) values('301','PRIORITY3');
+1. For Customercare user - StartDate and Enddate is not able to edit
+2. For Retailer report from Customercare user- Subscriber no should be made optional
+3. OfferDescription should be there in customercare view 
+4. Commission Amount should be there in the Customercare view
+
+
+Select OFFER_NAME,count(*),TRANSACTION_STATUS, RECHARGE_AMOUNT,OFFER_TYPE,FACE_VALUE,OFFER_CATEGORY from RECHARGE_DETAILS where TRANSACTION_DATE between ? and ? group by TRANSACTION_STATUS ,OFFER_NAME,RECHARGE_AMOUNT,OFFER_TYPE,FACE_VALUE,OFFER_CATEGORY -- Query for Mysql
+
+Select ofr_name,count(*),tran_status, rechrge_amnt,offer_type,denm_amnt,offer_type from iristransactionaldata where tr_date >=? and tr_date <=? group by tran_status ,ofr_name,rechrge_amnt,offer_type,denm_amnt,offer_type -- Query for IB
+
+Select count(*),sum(rechrge_amnt),sum(ret_com),avg(rechrge_amnt),avg(ret_com),count(distinct ret_msisdn),tr_date,t2.c,t2.RA,t2.td   from iristransactionaldata as t ,(select count(*) as c,sum(rechrge_amnt) as RA,tr_date as td from iristransactionaldata where tran_status='0' and offer_type='2' group by tr_date) as t2 where tran_status='0' and offer_type!='0' and t.tr_date=t2.td and t.tr_date >='2018-01-08' and t.tr_date <='2018-01-14' group by t.tr_date,t2.c,t2.RA,t2.td,t.tr_date_time order by tr_date_time DESC
+
+Select count(*),sum(RECHARGE_AMOUNT),sum(RETAILER_COMMISSION),avg(RECHARGE_AMOUNT),avg(RETAILER_COMMISSION),count(distinct RETAILER_MSISDN),TRANSACTION_DATE,t2.c,t2.RA,t2.td   from RECHARGE_DETAILS as t ,(select count(*) as c,sum(RECHARGE_AMOUNT) as RA,TRANSACTION_DATE as td from RECHARGE_DETAILS where TRANSACTION_STATUS='0' and OFFER_TYPE='2' group by TRANSACTION_DATE) as t2 where TRANSACTION_STATUS='0' and OFFER_TYPE!='0' and t.TRANSACTION_DATE=t2.td and t.TRANSACTION_DATE between '2018-01-08' and '2018-01-14' group by t.TRANSACTION_DATE order by START_TIME DESC
+
+Select count(*),sum(rechrge_amnt),sum(ret_com),avg(rechrge_amnt),avg(ret_com),count(distinct ret_msisdn),tr_date,t2.c,t2.RA,t2.td   from iristransactionaldata as t ,
+(select count(*) as c,sum(rechrge_amnt) as RA,tr_date as td from iristransactionaldata where tran_status='0' and offer_type='2' group by tr_date) as t2 
+where tran_status='0' and offer_type!='0' and t.tr_date=t2.td and t.tr_date >='2018-01-01' and t.tr_date <='2018-01-18' group by t.tr_date,t2.c,t2.RA,t2.td,t.tr_date_time order by tr_date_time DESC
+
+
+
+Select count(*),sum(rechrge_amnt),sum(ret_com),avg(rechrge_amnt),avg(ret_com),count(distinct ret_msisdn),tr_date,t2.c,t2.RA,t2.td from iristransactionaldata as t ,(select count(*) as c,sum(rechrge_amnt) as RA,tr_date as td from iristransactionaldata where tran_status='0' group by tr_date) as t2 where tran_status='0' and t.tr_date=t2.td and t.tr_date >='2018-01-08' and t.tr_date <='2018-01-18' group by t.tr_date,t2.c,t2.RA,t2.td,t.tr_date_time order by tr_date_time DESC
+
+eval exec /bin/mv [glob activation*.cdr] /data/irisbl/webaxn/cdrs/blink/PROCESSING/
+
+ussd- 
+IRIS-
+Webaxn- --->Offers fetched - Default Recharge - Prom RC - Normal commission + no bonus,VAS Promo- 34Tk Recharge- 300mb and 10 sms
+IN- update offer -- offer activation
+CE- 
+DB- 
+GUI
+SMSGW
+PreTups-4 API- 1. status(success/failure-txnID),main balance,prmo RC and PromoVAS
+PrmoRC- one other case where bonus also given- default recharge+ extra bonus (Promo RC with bonus tag) - no IN involved
+PromoVAS- predefined - combo/single - pretups + IN - deduct + status + IN + offer activate
+if IN fails- another preTups Api (reversal)
+CSMS- smsgw
+Webaxn through csms(smsgw) hits SMSC- 
+
+
+
+*29394*8801941098534*10*1*2468#
+tcpdump -i any -s 0 port 9091 -w /tmp/9091_ce.pcap 
+
+
+10.40.43.183
+
+SFTP Path: 10.40.43.183 rplus/rplus@123 /infobrightdata/sftpdump
+
+
+4300: eTopUp:3199189.34
+8801903303982
+91
+
+mysql -uoam -poam -h10.40.43.182
+
+1. At edit time, offerType -IRIS , showing BI Product ID
+2. IN and IN_Direct should automatically come at edit time
+3. In INDirect_Interface Offer Expiry Relative for 10th Offer - should come text box - Done
+4. At edit time 
+5. Update Cache Thing
+6. Free - means RC
+
+2017-11-28 16:54:25
+2017-12-20
+
+SELECT count(*),DATE_FORMAT(START_TIME,'%H:%i') from RECHARGE_DETAILS WHERE START_TIME >='2017-11-20 00:00:00' AND START_TIME <='2017-11-28 16:54:25' group by DATE_FORMAT(START_TIME,'%H:%i'); - 
+
+Select OFFER_NAME,count(*),TRANSACTION_STATUS, RECHARGE_AMOUNT,OFFER_TYPE,FACE_VALUE,OFFER_CATEGORY from RECHARGE_DETAILS where TRANSACTION_DATE between '2017-11-26' and '2017-12-26' group by TRANSACTION_STATUS ,OFFER_NAME,RECHARGE_AMOUNT,OFFER_TYPE,FACE_VALUE,OFFER_CATEGORY;
+
+
+SELECT count(*), sum(RECHARGE_AMOUNT),sum(RETAILER_COMMISSION),CAMPAIGN_NAME from RECHARGE_DETAILS WHERE TRANSACTION_DATE= '2017-12-26' AND CAMPAIGN_NAME IN ('Pre Test Campaign') AND TRANSACTION_STATUS='0' group by CAMPAIGN_NAME; - Business Dashboard
+
+
+Select OFFER_NAME,TRANSACTION_DATE,RECHARGE_AMOUNT,RETAILER_COMMISSION from RECHARGE_DETAILS where TRANSACTION_STATUS='0' AND TRANSACTION_DATE between '2017-11-26' and '2017-12-26' and RETAILER_MSISDN='917777700010' order by START_TIME DESC;  - Retailer Wise Report
+
+Select count(*),sum(RECHARGE_AMOUNT),sum(RETAILER_COMMISSION),avg(RECHARGE_AMOUNT),avg(RETAILER_COMMISSION),count(distinct RETAILER_MSISDN),TRANSACTION_DATE,t2.c,t2.RA,t2.td   from RECHARGE_DETAILS as t ,(select count(*) as c,sum(RECHARGE_AMOUNT) as RA,TRANSACTION_DATE as td from RECHARGE_DETAILS where TRANSACTION_STATUS='0' and OFFER_TYPE='2' group by TRANSACTION_DATE) as t2 where TRANSACTION_STATUS='0' and OFFER_TYPE!='0' and t.TRANSACTION_DATE=t2.td and t.TRANSACTION_DATE between '2017-11-26'and '2017-12-26' group by t.TRANSACTION_DATE order by START_TIME DESC - Daily Transaction Report
+
+show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| IRIS               |
+| Webaxn             |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+6 rows in set (0.00 sec)
+
+mysql> use IRIS;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> show tables;
++------------------------------+
+| Tables_in_IRIS               |
++------------------------------+
+| ActionProperties             |
+| AuditTrail                   |
+| CAMP10_ActionStatus          |
+| CAMP12_ActionStatus          |
+| CAMP13_ActionStatus          |
+| CAMP14_ActionStatus          |
+| CAMP15_ActionStatus          |
+| CAMP17_ActionStatus          |
+| CAMP19_ActionStatus          |
+| CAMP1_ActionStatus           |
+| CAMP20_ActionStatus          |
+| CAMP22_ActionStatus          |
+| CAMP23_ActionStatus          |
+| CAMP24_ActionStatus          |
+| CAMP30_ActionStatus          |
+| CAMP33_ActionStatus          |
+| CAMP4_ActionStatus           |
+| CAMP5_ActionStatus           |
+| CAMP6_ActionStatus           |
+| CAMP8_ActionStatus           |
+| CampOptInOutInfo             |
+| Campaign                     |
+| CampaignApprovalStatus       |
+| CampaignControlGroup         |
+| CampaignDailyStatusReport    |
+| CampaignExtraInfo            |
+| CampaignFirstEvent           |
+| CampaignPauseStatus          |
+| CampaignPriority             |
+| CampaignRegistersSummaryData |
+| CampaignTransTablesMapping   |
+| CampaignUserLists            |
+| CompressedUserLists          |
+| Conditions                   |
+| CounterValues                |
+| Countries                    |
+| Dashboard                    |
+| DataProcessingUnitStatus     |
+| Dimensions                   |
+| EventGroupDetails            |
+| ExclusionUserList            |
+| ExpressionProperties         |
+| FtpFileProcessingStatusInfo  |
+| GlobalFilters                |
+| GlobalUserLists              |
+| HourlyAvailableCapacity      |
+| IRISOfferDetails             |
+| IRISOfferProperties          |
+| IRISTransactionalData        |
+| KeywordProgramMapping        |
+| OCIOfferDetails              |
+| OfferMessage                 |
+| OfferPromotionalMessage      |
+| PlanningExecutionStatus      |
+| PromotionalMessage           |
+| PromotionalMsgProperties     |
+| RECHARGE_DETAILS             |
+| RegionInfo                   |
+| Registers                    |
+| RetailerProfile              |
+| RetailerProfilebkup          |
+| RunningCampaignExclusionList |
+| SchDataUnitProcessingStatus  |
+| Schedule                     |
+| SecurityQuestionAndAnswer    |
+| Segment                      |
+| SegmentCache                 |
+| SegmentExtraInfo             |
+| SegmentFileDetails           |
+| SegmentFolderDetails         |
+| SegmentHistory               |
+| SubscriberLanguage           |
+| SubscriberOfferActivites     |
+| SubscriberOffers             |
+| SubscriberProfile            |
+| SubscriberRegistration       |
+| SubscriberSMSDRFailedList    |
+| SystemConfigaration          |
+| SystemIDs                    |
+| TemplateOfferMapping         |
+| TemplateOfferSchedule        |
+| TriggerOfferCombination      |
+| TriggerProperties            |
+| UploadedSegment              |
+| UserActivity                 |
+| UserExtraInfo                |
+| UserInfo                     |
+| UserLists                    |
+| UserPrivilages               |
+| UserRolePrivilagesMapping    |
+| UserRoles                    |
+| WaterfallSummary             |
+| WidgetInfo                   |
+| contact_policy_track         |
++------------------------------+
+94 rows in set (0.00 sec)
+
+mysql> select * from IRISOfferProperties;
++---------+----------------------------+----------------------------------------------------------------+
+| OfferID | PropertyID                 | PropertyValue                                                  |
++---------+----------------------------+----------------------------------------------------------------+
+| OFF10   | CRBT_INDEX                 | SampleCRBT1                                                    |
+| OFF10   | ERS_RECHARGE_AMOUNT        | 1000                                                           |
+| OFF10   | ERS_RETAILER_COMMISSION    | 100                                                            |
+| OFF10   | OFFER_MESSAGE_RETAILER_fre | SampleCRBT1                                                    |
+| OFF10   | SMS_Message_fre            | SampleCRBT1 ACTIVATED                                          |
+| OFF10   | SMS_MESSAGE_RETAILER_fre   | SampleCRBT1 ACTIVATED                                          |
+| OFF10   | SMS_MESSAGE_TYPE           | 0                                                              |
+| OFF101  | ERS_RECHARGE_AMOUNT        | 10                                                             |
+| OFF101  | ERS_RETAILER_COMMISSION    | 0                                                              |
+| OFF101  | OFFER_MESSAGE_RETAILER_fre |                                                                |
+| OFF101  | SMS_Message_eng            | success                                                        |
+| OFF101  | SMS_MESSAGE_RETAILER_fre   |                                                                |
+| OFF101  | SMS_MESSAGE_TYPE           | 0                                                              |
+| OFF102  | ERS_RECHARGE_AMOUNT        | 50                                                             |
+| OFF102  | ERS_RETAILER_COMMISSION    | 2                                                              |
+| OFF102  | OFFER_MESSAGE_RETAILER_fre |                                                                |
+| OFF102  | SMS_Message_eng            | Success !!                                                     |
+| OFF102  | SMS_MESSAGE_RETAILER_fre   |                                                                |
+| OFF102  | SMS_MESSAGE_TYPE           | 0                                                              |
+| OFF106  | AIR_MA_AMOUNT              | 150000                                                         |
+| OFF106  | AIR_MA_EXPIRY_TYPE         | 1                                                              |
+| OFF106  | ERS_RECHARGE_AMOUNT        | 100                                                            |
+| OFF106  | ERS_RETAILER_COMMISSION    | 3                                                              |
+| OFF106  | PRETUPS_TYPE               | 1                                                              |
+| OFF106  | SMS_Message_eng            | Hello !.. Your Pre test offer has been successfully activated. |
+| OFF106  | SMS_MESSAGE_TYPE           | 0                                                              |
+| OFF106  | SMS_MESSAGE_TYPE1          | 0                                                              |
+| OFF106  | SMS_Message1_eng           | 100 RC 3                                                       |
+| OFF12   | ERS_RECHARGE_AMOUNT        | 10                                                             |
+| OFF12   | ERS_RETAILER_COMMISSION    | 100                                                            |
+| OFF12   | OFFER_MESSAGE_RETAILER_fre | DataBundle1                                                    |
+| OFF12   | SMS_Message_fre            | DataBundle1 activated                                          |
+| OFF12   | SMS_MESSAGE_RETAILER_fre   | DataBundle1 activated                                          |
+| OFF12   | SMS_MESSAGE_TYPE           | 0                                                              |
+| OFF13   | ERS_RECHARGE_AMOUNT        | 10                                                             |
+| OFF13   | ERS_RETAILER_COMMISSION    | 100                                                            |
+| OFF13   | OFFER_MESSAGE_RETAILER_fre | DataBundle2                                                    |
+| OFF13   | SMS_Message_fre            | DataBundle2 activated                                          |
+| OFF13   | SMS_MESSAGE_RETAILER_fre   | DataBundle2 activated                                          |
+| OFF13   | SMS_MESSAGE_TYPE           | 0                                                              |
+| OFF15   | ERS_RECHARGE_AMOUNT        | 1000                                                           |
+| OFF15   | ERS_RETAILER_COMMISSION    | 100                                                            |
+| OFF15   | PRETUPS_TYPE               | 1                                                              |
+| OFF15   | SMS_Message_eng            | Hi Offer Activation SMS for Subscriber                         |
+| OFF15   | SMS_MESSAGE_TYPE           | 0                                                              |
+| OFF15   | SMS_MESSAGE_TYPE1          | 0                                                              |
+| OFF15   | SMS_Message1_eng           | Hi Offer Activation SMS for Retailer                           |
+| OFF16   | ERS_RECHARGE_AMOUNT        | 100                                                            |
+| OFF16   | ERS_RETAILER_COMMISSION    | 1                                                              |
+| OFF16   | OFFER_MESSAGE_RETAILER_fre | Offer2                                                         |
+| OFF16   | SMS_Message_fre            | Offer2 activated                                               |
+| OFF16   | SMS_MESSAGE_RETAILER_fre   | Offer2 activated                                               |
+| OFF16   | SMS_MESSAGE_TYPE           | 0                                                              |
++---------+----------------------------+----------------------------------------------------------------+
+53 rows in set (0.00 sec)
+
+mysql> select * from IRISOfferProperties where offerId='OFF15';
++---------+-------------------------+----------------------------------------+
+| OfferID | PropertyID              | PropertyValue                          |
++---------+-------------------------+----------------------------------------+
+| OFF15   | ERS_RECHARGE_AMOUNT     | 1000                                   |
+| OFF15   | ERS_RETAILER_COMMISSION | 100                                    |
+| OFF15   | PRETUPS_TYPE            | 1                                      |
+| OFF15   | SMS_Message_eng         | Hi Offer Activation SMS for Subscriber |
+| OFF15   | SMS_MESSAGE_TYPE        | 0                                      |
+| OFF15   | SMS_MESSAGE_TYPE1       | 0                                      |
+| OFF15   | SMS_Message1_eng        | Hi Offer Activation SMS for Retailer   |
++---------+-------------------------+----------------------------------------+
+7 rows in set (0.00 sec)
+
+DB Design 
+OAM Installation -27th Dec
+CE
+GUI
+Reports- Offer Reports
+Dashboard
+IRIS|B| - Today
+Segmentation- Why count not coming
+Offers creation - Today
+
+
+

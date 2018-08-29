@@ -1,0 +1,28 @@
+SOAP : Simple Object Access Protocol  REST : Representational State Transfer
+1. Java Architecture for XML Binding (JAXB) - to provide API for converting Object to XML and XML to Object easily.
+		JAXB Marshalling: Converting a Java Object to XML.
+		JAXB Unmarhsalling: Converting XML to Java Object.
+
+JAXB - uses java annotations. - Why ?
+- Beacuse we need to annotate Java Object to provide instructions for XML Creation and then we have to create Marshaller to convert Object to XML.
+
+JAXBContext - Entry point for JAXB and provides methods to get marshaller and unmarshaller objects.
+
+Basic and Useful Annotations are :
+1. @XMLRootElement- mandatory annotation for the object to be used in JAXB. Defines the root element for the XML Content.
+2. @XMLType- Maps the class to the XML Schema Type.Used for ordering the elements in the XML.
+3. @XMLTransient- This makes sure that the Object property is not written to the XML.
+4. @XMLAttribute- Creates Object property as attribute.
+5. @XMLElement(name="abc")- Creates the element with name "abc".
+
+XML to POJO -- XJC 
+
+https://www.journaldev.com/1234/jaxb-example-tutorial
+https://intellipaat.com/interview-question/java-interview-questions/
+http://www.softwaretestinghelp.com/web-services-interview-questions/
+https://www.journaldev.com/9193/web-services-interview-questions-soap-restful
+https://www.quora.com/How-do-I-sort-an-ArrayList-of-objects-by-each-objects-integer-parameter
+=======================================================================================================================================================
+WebServices-1. SOAP 2. REST 
+Two specifications in Java world for WebServices- 1. JAX-WS(SOAP) 2. JAX-RS(REST)
+What is webservice- A service made available over the network/web.Website is meant for Human consumption while the Webservice is meant for code/application level consumption.It allows two different machines/applications/codes to interact with earch other.Interoperablility

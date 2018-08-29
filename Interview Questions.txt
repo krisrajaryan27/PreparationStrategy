@@ -1,0 +1,83 @@
+Interview Questions
+========================
+1. Whats the difference between an abstract class and interface? When would you want to use them?
+2. What's the difference between a left join and an inner join?
+4. What's the difference between overriding and overloading a method? Explain how both are done.
+6. How do short-circuited operators work?
+7. Explain what the StringBuilder class is and why you'd want to use it?
+8. What's the difference between a static method and a non-static method?
+9. difference between "volatile" and synchronize keyword?
+10. Explain what happens when you pass a "ref" or "out" parameter into a method. What's the difference between those two keywords?
+11. What's a weakreference? When would you want to use one?
+12. What's the difference between a DataTable and a DataReader?
+13. What's the difference between a value-type and a reference type?
+14. What does the "readonly" keyword in C# mean?
+15. Write your own linked list class without using the built-in classes.
+16. Write your own hashtable class without using the built-in classes.
+17. Write a class that represents a binary tree. Write a method that traverses all nodes of the tree.
+18. Write a method to perform a binary search on an array without using built-in methods.
+19. Draw a database schema for a blog. Each user only has one blog, each blog has many categories, each category has many posts, and each post can belong to more than one category. Ask your applicant to write queries to pull specific information out.
+20. (Event handlers) Create a class with a custom event handler, create another class which hooks onto the custom event handler.
+21. (XML) Load an XML document and select all of the nodes with properties x, y, and z.
+22. (Functional programming) Create a function that accepts another function as a parameter. A Map or Fold function works really good for this.
+23. (Reflection) Write a function which determines if a class has a particular attribute.
+24. (Regex) Write a regular expression which removes all tags from a block of HTML.
+25. Explain difference between volatile and synchronization.
+A good understanding of volatiles demonstrates that a person understands how compiler optimizations change the correctness of code, how threads keep local copies of shared state which may be out of sync at any given time, and is minimally aware of some of the complexities of multithreaded code.
+
+A good understanding of weak references demonstrates that a person knows about the intimate details of the garbage collector and how it decides when to free memory. Sure, you could ask candidates "how does a garbage collector work
+
+26. What is the difference between Set, Map and List?
+27. Can an interface extend multiple interfaces?
+28. Usage of final keyword in method calls
+29. What kinds of parameters are passed by reference in Java?
+30. What does a "checked exception" mean?
+31. Which one is better to use and when: Assertions or Exceptions to handle unexpected conditions?
+32. Why String class is final? (or is it not? ;) )
+33. are the wait, notify and notifyAll methods in Object class?
+34. Why isn't Thread class final? Why would I extend Thread, ever?
+35. Why there are two Date classes; one in java.util package and another in java.sql?
+36. What happens if an exception is thrown in finally block? Is the remaining finally executed or not?
+37. There is a garbage collector alright, but then is memory leak totally absent in a Java applications? If not, how so?
+	For J2EE:
+
+38. Is it good to have instance/static variables in a servlet? Why not? Then where do you store "state"?
+39. continuing on above question: what & where is a "state" for a (web) application?
+40. What happens if I started creating/closing DB connections in "JSP"?
+41. What are the ways to handle JSP exceptions? try-catch? Hmmm.. is there anything else?
+42. What is difference between String, StringBuffer and StringBuilder?
+43. What is 'System', 'out', 'println' in System.out.println ? What happens when you call 'put' on HashMap ?
+44. Explain the various access modifiers used in Java. I have had lots of people struggle with this, especially default access.
+45. What is the general contract when overriding equals?
+46. Is better option prefer lists or arrays?
+47. What are the generally accepted naming conventions?
+48. How serialization works?
+49. How to implement Comparable?
+50. What are the advantages of using JDBC's Prepared Statements?
+51. What is Java EE?
+52. What is a container and what services does it provide?
+53. What is the difference between an abstract class and an interface? When would you use each of them?
+54. the importance of Object.equals() and Object.hashCode() in java.util.collections interface implementation .
+55. java.util.concurrent package classes 
+56. Difference between and web server and a web container
+57.What do you like most / least about Java and why?
+58. why would you override the toString() method?
+59. What is the difference between sleep and wait ? Not many people actually understand how wait is working.
+60. How do you need to handle InterruptedExceptions ?
+61. Why is main method in Java called as public static void main(String[] args) ?
+62. How do threads work? What is synchronized? If there are two synchronized methods in a class can they be simultaneously executed by two threads. You will be surprised to hear many people answer yes. Then all thread related question, e.g. deadlock, starvation etc.
+63. Java Core (Object#methods(); String#intern(); Checked & Unchecked exceptions and when should you use them; Memory Leaks
+64. Collections API (ArrayList vs. LinkedList; how HashMap works and what's the difference betwixt HashMap, Hastable & ConcurrentHashMap; what is a ConcurrentModificationException; what concurrent collections do you know
+65. General (prepared statements; mapping class hierarchies to the relational DB; types of locks; transaction isolation
+66. Spring IoC (how to define an ArrayList in XML; bean scopes)
+67. XML (namespaces; SAX vs. DOM; XML Catalogs; XPath expressions
+68. OOD (LSP, SRP, OCP, DRY, ISP; give some example to the interviewed guy to solve some OO-problem)
+69. Design Patterns (all 3 types of Factories, Lazy Singleton with a proper synchronization, Command vs. Strategy
+70. Algorithms and structures (trees, heaps, lists; soring, iterating, etc.)
+71. Build tools, e.g. Maven (dependencyManagement; profiles; resource filtering; deploying artifacts/applications
+72. if you have e linked list how to find if there is a cycle in the linked list
+73. whether SOAP Web services support only "POST" http method or there is some way to accept other methods on the server side
+74. Comparable is used to define a natural (default) ordering for objects within a class while Comparator is used to define a custom ordering to be passed to a method.
+75. Coin change Program.
+
+
